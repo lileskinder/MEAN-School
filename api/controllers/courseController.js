@@ -16,6 +16,6 @@ module.exports.getOneCourse = function (request, response) {
     console.log("GET course of ", studentId);
     Student.findById(studentId).select("Courses").exec(function (err, students) {
         const course = students.Courses.id(courseId)
-        response.status(200).json(course);
+        response.status(200).json(course);  
     });
 }
