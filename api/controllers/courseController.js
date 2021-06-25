@@ -14,7 +14,8 @@ module.exports.getOneCourse = function (request, response) {
     const studentId = request.params.studentId;
     const courseId = request.params.courseId;
     console.log("GET course of ", studentId);
-    Student.findById(studentId).select("Courses").findById(courseId).exec(function (err, courses) {
-        response.status(200).json(courses);
+    Student.findById(studentId).select("Courses").exec(function (err, students) {
+        const course = students.Courses.id(courseId)
+        response.status(200).json(course);
     });
 }
